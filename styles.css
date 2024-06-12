@@ -24,6 +24,34 @@ li a {
 html {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+/*home page background*/
+.home-page {
+  background: var(--color-black);
+}
+
+/*buttons*/
+.btn {
+  display: block;
+  text-decoration: none;
+  padding: 0.8rem 1rem;
+  border-radius: 5px;
+  margin: 1rem;
+}
+
+.btn-white {
+  color: var(--color-white-accent);
+  border: 2px solid var(--color-white-accent);
+}
+.btn-white:hover {
+  background-color: var(--color-white-accent);
+  color: var(--color-black);
+}
+
+.btn-green {
+  background-color: var(--color-green);
+  color: var(--color-black);
+  border: 2px solid var(--color-green);
+}
 /*top navigation*/
 header {
   background-color: var(--color-black);
@@ -33,6 +61,7 @@ header {
   left: 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.11);
   padding: 5px 0;
+  z-index: 99;
 }
 .top-nav-container {
   display: flex;
@@ -126,4 +155,68 @@ header {
   .container {
     max-width: 1140px;
   }
+}
+
+/*hero section*/
+.hero {
+  display: flex;
+  justify-content: space-around;
+  padding: 5rem 0 3rem;
+}
+
+.hero-img-container {
+  position: relative;
+}
+.decorator {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border: 1px solid var(--color-white);
+  border-radius: 5px;
+  left: 20px;
+  top: 20px;
+  z-index: -1;
+}
+.hero-img-container img {
+  max-width: 300px;
+  max-height: 300px;
+  border-radius: 10px;
+  z-index: 2;
+}
+
+.dotted-grid {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    #ffffff48 1px,
+    transparent 0
+  );
+  background-size: 10px 10px;
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  z-index: -1;
+}
+.absolute-top {
+  left: -25px;
+  top: -25px;
+}
+.absolute-bottom {
+  right: -50px;
+  bottom: -50px;
+}
+
+/*hero content*/
+.hero-content {
+  color: var(--color-white);
+  font-size: 1.2rem;
+}
+
+.hero-content h1 {
+  color: var(--color-green);
+  font-size: 2rem;
+  padding: 1.5rem 0;
+}
+
+.callout {
+  display: flex;
 }
