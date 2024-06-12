@@ -212,9 +212,59 @@ header {
 }
 
 .hero-content h1 {
+  border-right: 2px solid var(--color-green);
   color: var(--color-green);
   font-size: 2rem;
-  padding: 1.5rem 0;
+  margin: 1.5rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+  -webkit-animation: typing 3.5s steps(12, end) 0s infinite alternate,
+    blinking 1s infinite;
+  animation: typing 3.5s steps(20, end) 0s infinite alternate forwards,
+    blinking 1s ease infinite;
+}
+
+@-webkit-keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 260px;
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 260px;
+  }
+}
+
+@-webkit-keyframes blinking {
+  0% {
+    border-right-color: transparent;
+  }
+  50% {
+    border-right-color: var(--color-green);
+  }
+  100% {
+    border-right-color: transparent;
+  }
+}
+
+@keyframes blinking {
+  0% {
+    border-right-color: transparent;
+  }
+  50% {
+    border-right-color: var(--color-green);
+  }
+  100% {
+    border-right-color: transparent;
+  }
 }
 
 .callout {
