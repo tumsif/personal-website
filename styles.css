@@ -162,8 +162,22 @@ header {
   display: flex;
   justify-content: space-around;
   padding: 5rem 0 3rem;
+  -moz-column-gap: 20px;
+  column-gap: 20px;
 }
 
+@media screen and (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    padding: 2rem 10px 3rem;
+    align-items: center;
+    row-gap: 50px;
+  }
+  .callout {
+    justify-content: space-around;
+    padding: 1rem 0;
+  }
+}
 .hero-img-container {
   position: relative;
 }
