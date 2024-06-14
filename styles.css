@@ -4,6 +4,12 @@
   --color-white: #f0f8ff;
   --color-white-accent: #fffff0;
 }
+::-moz-selection {
+  background-color: var(--color-green);
+}
+::selection {
+  background-color: var(--color-green);
+}
 *,
 *::after,
 *::before {
@@ -49,7 +55,7 @@ footer {
 ul {
   list-style-type: none;
 }
-li a {
+a {
   color: var(--color-white-accent);
   text-decoration: none;
 }
@@ -92,6 +98,26 @@ h3 {
   color: var(--color-black);
   border: 2px solid var(--color-green);
 }
+/*btn for links for quick naviagation*/
+.btn-link {
+  padding: 0.2rem 0;
+  color: #127700;
+  display: inline-flex;
+  align-items: center;
+  -moz-column-gap: 8px;
+  column-gap: 8px;
+  transition: all 1s ease;
+}
+.btn-link::after {
+  height: 16px;
+  width: 16px;
+  content: url(icons/arrow_right.svg);
+}
+
+.btn-link:hover {
+  transform: translateX(5px);
+}
+
 /*top navigation*/
 
 .top-nav-container {
@@ -373,22 +399,21 @@ h3 {
   margin-top: 10px;
 }
 
-/*curriculum vitae*/
-.content-cv {
+/*curriculum vitae and about section*/
+.content {
   display: flex;
   flex-direction: column;
   row-gap: 1rem;
-  background-color: var(--color-white);
 }
-.content-cv h1 {
+.content h1 {
   text-align: center;
 }
 
-.content-cv h2 {
+.content h2 {
   padding: 1rem 0;
 }
 
-.content-cv ul {
+.content.cv ul {
   list-style-type: circle;
   list-style-image: radial-gradient(
     circle,
@@ -397,6 +422,10 @@ h3 {
   );
 }
 
-.content-cv li {
+.content.cv li {
   line-height: 2;
+}
+
+.content.about p {
+  line-height: 1.5;
 }
