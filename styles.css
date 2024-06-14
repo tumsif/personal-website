@@ -16,14 +16,16 @@ html {
 }
 
 body {
-  padding-top: 80px;
+  padding-top: 72px;
   min-height: 100svh;
   display: flex;
   flex-direction: column;
 }
 
 main {
+  padding: 2rem 0;
   flex: 1;
+  background-color: var(--color-white);
 }
 
 header {
@@ -52,6 +54,16 @@ li a {
   text-decoration: none;
 }
 
+/*typography*/
+h1 {
+  font-size: 2rem;
+}
+h2 {
+  font-size: 1.4rem;
+}
+h3 {
+  font-size: 1rem;
+}
 /*home page background*/
 .home-page {
   background: var(--color-black);
@@ -247,7 +259,6 @@ li a {
 .hero-content h1 {
   border-right: 2px solid var(--color-green);
   color: var(--color-green);
-  font-size: 2rem;
   margin: 1.5rem 0;
   overflow: hidden;
   white-space: nowrap;
@@ -310,7 +321,7 @@ li a {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  padding: 5rem 20px 20px;
+  padding: 2rem 20px 20px;
 }
 
 .footer-container div {
@@ -360,4 +371,32 @@ li a {
   border-top: 1px solid #444;
   padding-top: 10px;
   margin-top: 10px;
+}
+
+/*curriculum vitae*/
+.content-cv {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  background-color: var(--color-white);
+}
+.content-cv h1 {
+  text-align: center;
+}
+
+.content-cv h2 {
+  padding: 1rem 0;
+}
+
+.content-cv ul {
+  list-style-type: circle;
+  list-style-image: radial-gradient(
+    circle,
+    rgba(94, 255, 0, 1) 100%,
+    rgba(5, 173, 186, 1) 100%
+  );
+}
+
+.content-cv li {
+  line-height: 2;
 }
