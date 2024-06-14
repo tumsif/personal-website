@@ -21,8 +21,30 @@
     </header>
 
     <main>
-
-        <section class="container register-form-container"></section>
+        <section class="container content">
+            <h1>Register an account</h1>
+            <div class="register-form">
+                <form class="form-register" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post"
+                    enctype="multipart/form-data">
+                    <input type="text" id="first_name" name="first_name" placeholder="first name">
+                    <input type="text" id="second_name" name="second_name" placeholder="second name">
+                    <input type="text" id="surname" name="surname" placeholder="surname">
+                    <input type="text" id="username" name="username" placeholder="username">
+                    <input type="password" id="password" name="password" placeholder="password">
+                    <input type="email" id="email" name="email" placeholder="email">
+                    <input type="number" id="phone" name="phone" placeholder="phone number">
+                    <input type="text" id="facebook" name="facebook" placeholder="facebook account">
+                    <input type="text" id="twitter" name="twitter" placeholder="twitter">
+                    <input type="text" id="instagram" name="instagram" placeholder="instagram account">
+                    <div class="cv-input">
+                        <input type="file" id="cv" name="cv" placeholder="CV attachment" class="cv">
+                        <label for="cv" id="cv-label">click here to upload your CV</label>
+                        <span><img src="icons/cloud-upload.svg" alt="cv upload"></span>
+                    </div>
+                    <button class='btn-green' type='submit'>Send Message</button>
+                </form>
+            </div>
+        </section>
     </main>
     <footer>
         <div class="footer-container">
