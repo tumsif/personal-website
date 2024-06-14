@@ -15,7 +15,7 @@
             <li><a href="about.html">about</a></li>
             <li class="active"><a href="courses.php">courses</a></li>
             <li><a href="cv.html">CV</a></li>
-            <li><a href="contacts.html">contact</a></li>
+            <li><a href="contacts.php">contact</a></li>
             <li><a href="register.php">register</a></li>
         </ul>
     </header>
@@ -32,7 +32,7 @@
                     <li><a href="about.html">About</a></li>
                     <li><a href="courses.php">Courses</a></li>
                     <li><a href="cv.html">CV</a></li>
-                    <li><a href="contacts.html">Contact</a></li>
+                    <li><a href="contacts.php">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-contact">
