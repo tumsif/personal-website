@@ -5,7 +5,7 @@ $dbname = "personal_website";
 $dbpassword = "0907Tums$";
 
 //connect with database
-$mysqli = new mysqli($dbhostname, $dbusername, $databasePassword, $databasename);
+$mysqli = new mysqli($dbhostname, $dbusername, $dbpassword, $dbname);
 
 // check for the presence of errors
 if ($mysqli->connect_error) {

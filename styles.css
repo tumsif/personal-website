@@ -561,3 +561,13 @@ h3 {
   height: 16px;
   width: 16px;
 }
+
+.error-log {
+  text-align: center;
+  color: red;
+}
+
+.success-log {
+  text-align: center;
+  color: var(--color-green);
+}
