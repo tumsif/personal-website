@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         </div>
         <div class="contact-form">
           <?php
-          if ($_SESSION['submitted']) {
+          if (isset($_SESSION['submitted'])) {
             echo "
             <h2>Message sent</h2>
             <p>We will contact you back</p>

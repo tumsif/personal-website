@@ -63,10 +63,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $target_dir = "uploads/";
             $file = $_FILES['cv']['name'];
             $path = pathinfo($file);
-            $filename = $path['filename'];
+            $filename = "cvfile" . $path['filename'];
             $ext = $path['extension'];
             $temp_name = $_FILES['cv']['tmp_name'];
-            $path_filename_ext = $target_dir . $filename . $username . "cv" . "." . $ext;
+            $path_filename_ext = $target_dir . $filename . $username . "." . $ext;
+            $path_filename_ext = str_replace(" ", "_", $path_filename_ext);
 
             // Check if file already exists
             if (file_exists($path_filename_ext)) {
@@ -197,7 +198,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <label for="cv" id="cv-label">click here to upload your CV</label>
                         <span><img src="icons/cloud-upload.svg" alt="cv upload"></span>
                     </div>
-                    <button class='btn-green' type='submit'>Send Message</button>
+                    <button class='btn-green' type='submit'>Register</button>
                 </form>
             </div>
         </section>
