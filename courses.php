@@ -1,4 +1,4 @@
-<?php
+<?php session_start();
 require_once "config/db.php";
 // fetching data
 $listcourses = $mysqli->prepare("SELECT name, code, offering_department, semester_offered, academic_year, course_instructor, results FROM courses");
@@ -14,25 +14,55 @@ function filterData($data)
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $course_name = filterData($_POST['course_name']);
-    $course_code = filterData($_POST['course_code']);
-    $department = filterData($_POST['department']);
-    $results = filterData($_POST['results']);
-    $semester = filterData($_POST['semester']);
-    $year = filterData($_POST['year']);
-    $course_description = filterData($_POST['course-description']);
-    $instructor = filterData($_POST['instructor']);
-    $userid = 2;
+    if (isset($_POST['login-submit'])) {
+        $username = filterData($_POST['username']);
+        $password = filterData($_POST['password']);
 
-    $addcourse = $mysqli->prepare("INSERT INTO courses (name, code, short_description, offering_department, semester_offered, academic_year, course_instructor, results, userId) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    if ($addcourse == false) {
-        die("Sorry an error occurred error code:" . $mysqli->errno);
+        $loginstmt = $mysqli->prepare("SELECT id, password FROM users WHERE username = ?");
+        $loginstmt->bind_param("s", $username);
+
+        if (!$loginstmt->execute()) {
+            die("Execute failed: " . $loginstmt->error);
+        }
+        $loginstmt->store_result();
+
+        if ($loginstmt->num_rows > 0) {
+            $loginstmt->bind_result($loginID, $hashed_password);
+            $loginstmt->fetch();
+
+            if (password_verify($password, $hashed_password)) {
+                $_SESSION['username'] = $username;
+                $_SESSION['id'] = $loginID;
+            } else {
+                $_SESSION['error-login'] = "password does not match";
+            }
+        } else {
+            $_SESSION['error-login'] = "username not found";
+        }
+        header("Location: courses.php");
+        exit();
+    } else {
+        $course_name = filterData($_POST['course_name']);
+        $course_code = filterData($_POST['course_code']);
+        $department = filterData($_POST['department']);
+        $results = filterData($_POST['results']);
+        $semester = filterData($_POST['semester']);
+        $year = filterData($_POST['year']);
+        $course_description = filterData($_POST['course-description']);
+        $instructor = filterData($_POST['instructor']);
+        $userid = $_SESSION['id'];
+
+        $addcourse = $mysqli->prepare("INSERT INTO courses (name, code, short_description, offering_department, semester_offered, academic_year, course_instructor, results, userId) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        if ($addcourse == false) {
+            die("Sorry an error occurred error code:" . $mysqli->errno);
+        }
+        $addcourse->bind_param("ssssddsdd", $course_name, $course_code, $course_description, $department, $semester, $year, $instructor, $results, $userid);
+        $addcourse->execute();
+        header("Location: courses.php");
+        $addcourse->close();
+        exit();
     }
-    $addcourse->bind_param("ssssddsdd", $course_name, $course_code, $course_description, $department, $semester, $year, $instructor, $results, $userid);
-    $addcourse->execute();
-    header("Location: courses.php");
-    $addcourse->close();
-    exit();
+
 }
 ?>
 
@@ -150,6 +180,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </form>
                     </div>
                 </div>
+                <?php
+                if (!isset($_SESSION['id'])) {
+                    echo "
+                    <div class='login' id='login'>
+                        <form action=" . htmlspecialchars($_SERVER['PHP_SELF']) . " method='post'>
+                            <h2>Login</h2>
+                            <p>" . $_SESSION['error-login'] . "</p>
+                            <p>Access to this section requires to login</p>
+                            <input type='text' name='username' id='username' placeholder='username'>
+                            <input type='password' name='password' id='password' placeholder='password'>
+                            <input class='btn-green' type='submit' name='login-submit' id='login-submit' value='Login'>
+                            <a href='register.php'>register</a>
+                        </form>
+                    </div>
+                       ";
+                }
+                ?>
+
             </div>
         </section>
     </main>
